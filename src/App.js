@@ -1,6 +1,9 @@
 import './App.css';
+import 'react-toastify/dist/ReactToastify.css';
 import { lazy, Suspense } from 'react';
 import { Route, Switch } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+// import { toast } from 'react-toastify';
 import AppBar from './components/AppBar/AppBar';
 import Container from './components/Container/Container';
 import LoaderSpin from './components/Loader/LoaderSpin';
@@ -10,16 +13,18 @@ import LoaderSpin from './components/Loader/LoaderSpin';
 // import NotFoundView from './components/Views/NotFoundView';
 
 const HomePage = lazy(() =>
-  import('./components/Pages/HomePage.js' /* webpackChunkName: "home-page" */),
+  import(
+    './components/Pages/HomePage/HomePage.js' /* webpackChunkName: "home-page" */
+  ),
 );
 const MoviesPage = lazy(() =>
   import(
-    './components/Pages/MoviesPage.js' /* webpackChunkName: "movies-page" */
+    './components/Pages/MoviesPage/MoviesPage.js' /* webpackChunkName: "movies-page" */
   ),
 );
 const MovieDetailsPage = lazy(() =>
   import(
-    './components/Pages/MovieDetailsPage.js' /* webpackChunkName: "movie-details-page" */
+    './components/Pages/MovieDetailsPage/MovieDetailsPage.js' /* webpackChunkName: "movie-details-page" */
   ),
 );
 const NotFoundView = lazy(() =>
@@ -32,8 +37,8 @@ function App() {
   return (
     <Container>
       <AppBar />
+      <ToastContainer theme="colored" autoClose={2000} />
       <Suspense fallback={<LoaderSpin />}>
-        {/* <Suspense fallback={<h1>ЗАГРУЖАЕМ</h1>}> */}
         <Switch>
           <Route path="/" exact>
             <HomePage />

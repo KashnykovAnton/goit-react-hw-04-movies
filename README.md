@@ -89,3 +89,14 @@ This section has moved here:
 
 This section has moved here:
 [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+---
+
+My notes!
+
+1. homepage for GHP from package.json: "homepage":
+   "https://KashnykovAnton.github.io/goit-react-hw-04-movies",
+
+2. deploy for GH from package.json: "deploy": "gh-pages -d build"
+
+3. deploy for netlify from package.json: "deploy": "netlify deploy -p"

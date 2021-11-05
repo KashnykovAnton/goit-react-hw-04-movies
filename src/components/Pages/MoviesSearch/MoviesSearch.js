@@ -1,33 +1,32 @@
+import styles from './MoviesSearch.module.css';
+import { toast } from 'react-toastify';
 import { useState } from 'react';
 
 const MoviesSearch = ({ onValueSubmit }) => {
   const [valueSearch, setValueSearch] = useState('');
 
   const handleChange = e => {
-    // console.log('e.target.value:', e.target.value);
     setValueSearch(e.target.value.toLowerCase());
   };
 
   const handleSubmit = e => {
     e.preventDefault();
     if (valueSearch.trim() === '') {
-      alert('Введите корректное название!');
-      return;
+      toast.error('Введите корректное название!');
     }
     onValueSubmit(valueSearch);
-    // console.log('valueSearch:', valueSearch);
     setValueSearch('');
   };
 
   return (
-    <header className="Searchbar">
-      <form className="SearchForm" onSubmit={handleSubmit}>
-        <button type="submit" className="SearchForm-button">
-          <span className="SearchForm-button-label">Search</span>
+    <header className={styles.header}>
+      <form className={styles.form} onSubmit={handleSubmit}>
+        <button type="submit" className={styles.button}>
+          <span className={styles.buttonLabel}>Search</span>
         </button>
 
         <input
-          className="SearchForm-input"
+          className={styles.input}
           type="text"
           value={valueSearch}
           onChange={handleChange}
